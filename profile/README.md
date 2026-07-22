@@ -15,7 +15,7 @@ An R&D lab that prototypes and validates new technologies — promising experime
 
 - 🌐 ラボ紹介 / About the lab: <https://asopi.tech/labo>
 - 📚 Nim Architecture Guide: <https://asopitech.github.io/nim/>
-- 📝 Zenn: <https://zenn.dev/asopitech>
+- 📝 Zenn（技術記事 / tech articles in Japanese）: <https://zenn.dev/asopitech>
 - 🐦 X: <https://x.com/asopitech_iot>
 
 ## Support
