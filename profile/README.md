@@ -10,6 +10,7 @@ An R&D lab that prototypes and validates new technologies — promising experime
 | --- | --- | --- |
 | [Nimino](https://github.com/asopitech-labs/nimino) | Nim 製の軽量クロスプラットフォーム WebView デスクトップアプリ基盤 / A lightweight cross-platform WebView desktop framework in Nim | 🚧 In development |
 | [Nimculus](https://github.com/asopitech-labs/nimculus) | NimNUI + Metal の GPU ネイティブコードエディタ / A GPU-native code editor built with Nim and NimNUI | 🚧 In development |
+| [Theatora](https://github.com/asopitech-labs/theatora) | アプリケーションコードを変えずに、プロバイダー・ランタイム・構成を組み替えられるコンポーザブルなバックエンド構築キット / A composable backend construction kit for changing providers, runtimes, and topology without rewriting the application（[Website](https://asopitech-labs.github.io/theatora/)） | 💡 Concept published |
 | [TUBUSA/備 (Contexum)](https://asopitech-labs.github.io/tubusa-contexum-pages/) | 人材・案件・作業・売上・資金をひとつながりの仕事として扱う業務アプリケーション構想 / A business-app concept connecting people, projects, work, revenue, and cash（[English](https://asopitech-labs.github.io/tubusa-contexum-pages/en/)） | 💡 Concept published |
 
 ## Links
