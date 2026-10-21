@@ -1,10 +1,12 @@
 <p align="center">
   <a href="https://asopi.tech/labo">
-    <img src="https://avatars.githubusercontent.com/u/247176946?s=200" alt="Asopitech Labo" width="120">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/asopitech-labs/.github/main/assets/brand/lockup-labo-dark-800.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/asopitech-labs/.github/main/assets/brand/lockup-labo-light-800.png">
+      <img alt="Asopitech Labo" src="https://raw.githubusercontent.com/asopitech-labs/.github/main/assets/brand/lockup-labo-light-800.png" width="420">
+    </picture>
   </a>
 </p>
-
-<h1 align="center">Asopitech Labo 🧪</h1>
 
 <p align="center">
   <b>まず作って確かめる R&D ラボ。</b><br>
