@@ -1,0 +1,208 @@
+{
+  "canvas": {
+    "width": 2752,
+    "height": 6752
+  },
+  "tiles": [
+    {
+      "name": "lockup-asopitech-dark",
+      "x": 608,
+      "y": 256,
+      "w": 1536,
+      "h": 384,
+      "background": "transparent",
+      "purpose": "personal profile README hero, dark theme",
+      "export": [
+        {
+          "path": "lockup-asopitech-dark.png",
+          "size": [
+            1536,
+            384
+          ]
+        },
+        {
+          "path": "lockup-asopitech-dark-800.png",
+          "size": [
+            800,
+            200
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lockup-asopitech-light",
+      "x": 608,
+      "y": 768,
+      "w": 1536,
+      "h": 384,
+      "background": "transparent",
+      "purpose": "personal profile README hero, light theme",
+      "export": [
+        {
+          "path": "lockup-asopitech-light.png",
+          "size": [
+            1536,
+            384
+          ]
+        },
+        {
+          "path": "lockup-asopitech-light-800.png",
+          "size": [
+            800,
+            200
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lockup-labo-dark",
+      "x": 608,
+      "y": 1280,
+      "w": 1536,
+      "h": 384,
+      "background": "transparent",
+      "purpose": "lab profile README hero, dark theme",
+      "export": [
+        {
+          "path": "lockup-labo-dark.png",
+          "size": [
+            1536,
+            384
+          ]
+        },
+        {
+          "path": "lockup-labo-dark-800.png",
+          "size": [
+            800,
+            200
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lockup-labo-light",
+      "x": 608,
+      "y": 1792,
+      "w": 1536,
+      "h": 384,
+      "background": "transparent",
+      "purpose": "lab profile README hero, light theme",
+      "export": [
+        {
+          "path": "lockup-labo-light.png",
+          "size": [
+            1536,
+            384
+          ]
+        },
+        {
+          "path": "lockup-labo-light-800.png",
+          "size": [
+            800,
+            200
+          ]
+        }
+      ]
+    },
+    {
+      "name": "social-asopitech",
+      "x": 96,
+      "y": 2368,
+      "w": 2560,
+      "h": 1280,
+      "background": "#4A1F26",
+      "purpose": "personal GitHub profile social link preview",
+      "export": [
+        {
+          "path": "social-asopitech.png",
+          "size": [
+            2560,
+            1280
+          ]
+        },
+        {
+          "path": "social-asopitech-1280.png",
+          "size": [
+            1280,
+            640
+          ]
+        }
+      ]
+    },
+    {
+      "name": "social-labo",
+      "x": 96,
+      "y": 3776,
+      "w": 2560,
+      "h": 1280,
+      "background": "#4A1F26",
+      "purpose": "lab GitHub organization social link preview",
+      "export": [
+        {
+          "path": "social-labo.png",
+          "size": [
+            2560,
+            1280
+          ]
+        },
+        {
+          "path": "social-labo-1280.png",
+          "size": [
+            1280,
+            640
+          ]
+        }
+      ]
+    },
+    {
+      "name": "banner-asopitech",
+      "x": 96,
+      "y": 5184,
+      "w": 2560,
+      "h": 640,
+      "background": "#4A1F26",
+      "purpose": "personal profile README wide header",
+      "export": [
+        {
+          "path": "banner-asopitech.png",
+          "size": [
+            2560,
+            640
+          ]
+        },
+        {
+          "path": "banner-asopitech-1280.png",
+          "size": [
+            1280,
+            320
+          ]
+        }
+      ]
+    },
+    {
+      "name": "banner-labo",
+      "x": 96,
+      "y": 5952,
+      "w": 2560,
+      "h": 640,
+      "background": "#FFFFFF",
+      "purpose": "lab profile README wide header",
+      "export": [
+        {
+          "path": "banner-labo.png",
+          "size": [
+            2560,
+            640
+          ]
+        },
+        {
+          "path": "banner-labo-1280.png",
+          "size": [
+            1280,
+            320
+          ]
+        }
+      ]
+    }
+  ]
+}
