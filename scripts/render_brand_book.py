@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets/brand"
-WIDTH, HEIGHT = 2752, 6752  # 2560px artwork + two 96px catalog margins
+WIDTH, HEIGHT = 2752, 7488  # 2560px artwork + two 96px catalog margins
 PINK, PALE = "#E57FC1", "#E7C0DD"
 INK, WHITE, MAROON = "#0B0B0F", "#FFFFFF", "#4A1F26"
 
@@ -32,7 +32,62 @@ TILES = [
          background=MAROON, purpose="personal profile README wide header"),
     dict(name="banner-labo", x=96, y=5952, w=2560, h=640,
          background=WHITE, purpose="lab profile README wide header"),
+    dict(name="mark-asopitech-square", x=608, y=6752, w=512, h=512,
+         background="transparent", purpose="lettering-free personal site header logo at 24–48px"),
+    dict(name="favicon-asopitech-plate", x=1632, y=6752, w=512, h=512,
+         background="#000000", purpose="personal site favicon with black contrast plate at 16–48px"),
 ]
+
+# Original pixel regions, not recreated artwork. The lower cone avoids the
+# lettering band; the uppermost star is intact. Their placements share a 512px
+# coordinate system for both small-mark tiles. No missing pixels are repainted.
+MOTIF_PARTS = [
+    dict(crop=(7, 134, 130, 213), position=(32, 205), size=(448, 288), largest_component=True),
+    dict(crop=(57, 6, 117, 64), position=(272, 16), size=(208, 201), largest_component=True),
+]
+
+
+def motif_part(source, part):
+    crop = source.crop(part["crop"])
+    if part["largest_component"]:
+        # Rectangular crops also catch disconnected ribbon tips. Keep only the
+        # cone or star's existing connected pixels, omitting those fragments.
+        # All retained RGBA values remain exactly those of the source PNG.
+        alpha = crop.getchannel("A")
+        remaining = {(x, y) for y in range(crop.height) for x in range(crop.width) if alpha.getpixel((x, y))}
+        largest = set()
+        while remaining:
+            seed = remaining.pop()
+            component, pending = {seed}, [seed]
+            while pending:
+                x, y = pending.pop()
+                for dx, dy in ((-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)):
+                    point = (x + dx, y + dy)
+                    if point in remaining:
+                        remaining.remove(point)
+                        component.add(point)
+                        pending.append(point)
+            if len(component) > len(largest):
+                largest = component
+        kept = Image.new("RGBA", crop.size)
+        for point in largest:
+            kept.putpixel(point, crop.getpixel(point))
+        crop = kept
+    return crop
+
+
+def small_mark(tile):
+    im = Image.new("RGBA", (tile["w"], tile["h"]), (0, 0, 0, 0))
+    with Image.open(OUT / "source/avatar-asopitech-512.png") as original:
+        source = original.convert("RGBA")
+    for part in MOTIF_PARTS:
+        crop = motif_part(source, part)
+        im.alpha_composite(crop.resize(part["size"], Image.Resampling.LANCZOS), part["position"])
+    if tile["background"] != "transparent":
+        plate = Image.new("RGBA", im.size, tile["background"])
+        plate.alpha_composite(im)
+        return plate
+    return im
 
 
 def first_font(candidates):
@@ -171,7 +226,7 @@ def main():
     text(book, (98, 148), "IDENTITY CATALOG     /     01     /     ORIGINAL MARKS + DIGITAL APPLICATIONS", 23, PALE, "regular")
     manifest = {"canvas": {"width": WIDTH, "height": HEIGHT}, "tiles": []}
     for i, tile in enumerate(TILES, 1):
-        art = lockup(tile) if tile["name"].startswith("lockup") else social(tile) if tile["name"].startswith("social") else banner(tile)
+        art = render_tile(tile)
         # paste WITHOUT a mask is intentional: tile alpha replaces the catalog
         # background, leaving truly transparent lockup pixels in the master PNG.
         book.paste(art, (tile["x"], tile["y"]))
@@ -181,15 +236,18 @@ def main():
             text(book, (96, tile["y"] + 163), "1536 × 384 px", 23, PALE, "regular")
             text(book, (96, tile["y"] + 205), "For " + ("dark" if tile["name"].endswith("dark") else "light") + " surfaces", 23, PALE, "regular")
             small = [800, 200]
-        else:
+        elif tile["name"].startswith(("social", "banner")):
             small = [1280, tile["h"] // 2]
+        else:
+            small = None
         entry = dict(tile)
+        sizes = [[tile["w"], tile["h"]], small] if small else [
+            [s, s] for s in ([512, 256, 96, 48] if tile["name"].startswith("mark-") else [512, 180, 48, 32, 16])]
         entry["export"] = [
-            {"path": tile["name"] + ".png", "size": [tile["w"], tile["h"]]},
-            {"path": tile["name"] + f"-{small[0]}.png", "size": small},
-        ]
+            {"path": tile["name"] + ("" if index == 0 else f"-{size[0]}") + ".png", "size": size}
+            for index, size in enumerate(sizes)]
         manifest["tiles"].append(entry)
-    text(book, (96, 6650), "08 APPLICATIONS     /     SOURCE MARKS PRESERVED     /     NATIVE PIXEL GEOMETRY", 22, PALE, "regular")
+    text(book, (96, HEIGHT - 80), "10 APPLICATIONS     /     SOURCE PIXELS PRESERVED     /     NATIVE PIXEL GEOMETRY", 22, PALE, "regular")
     validate(book, manifest)
     OUT.mkdir(parents=True, exist_ok=True)
     book.save(OUT / "design-book.png")
@@ -199,6 +257,16 @@ def main():
         validate(saved, manifest)
     print(f"Verified {WIDTH} × {HEIGHT} RGBA catalog; {len(TILES)} tiles; bounds, gutters and alpha valid.")
     print(f"Japanese font: {JP}")
+
+
+def render_tile(tile):
+    if tile["name"].startswith("lockup"):
+        return lockup(tile)
+    if tile["name"].startswith("social"):
+        return social(tile)
+    if tile["name"].startswith("banner"):
+        return banner(tile)
+    return small_mark(tile)
 
 
 if __name__ == "__main__":

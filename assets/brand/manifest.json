@@ -1,7 +1,7 @@
 {
   "canvas": {
     "width": 2752,
-    "height": 6752
+    "height": 7488
   },
   "tiles": [
     {
@@ -200,6 +200,91 @@
           "size": [
             1280,
             320
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mark-asopitech-square",
+      "x": 608,
+      "y": 6752,
+      "w": 512,
+      "h": 512,
+      "background": "transparent",
+      "purpose": "lettering-free personal site header logo at 24–48px",
+      "export": [
+        {
+          "path": "mark-asopitech-square.png",
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "path": "mark-asopitech-square-256.png",
+          "size": [
+            256,
+            256
+          ]
+        },
+        {
+          "path": "mark-asopitech-square-96.png",
+          "size": [
+            96,
+            96
+          ]
+        },
+        {
+          "path": "mark-asopitech-square-48.png",
+          "size": [
+            48,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "name": "favicon-asopitech-plate",
+      "x": 1632,
+      "y": 6752,
+      "w": 512,
+      "h": 512,
+      "background": "#000000",
+      "purpose": "personal site favicon with black contrast plate at 16–48px",
+      "export": [
+        {
+          "path": "favicon-asopitech-plate.png",
+          "size": [
+            512,
+            512
+          ]
+        },
+        {
+          "path": "favicon-asopitech-plate-180.png",
+          "size": [
+            180,
+            180
+          ]
+        },
+        {
+          "path": "favicon-asopitech-plate-48.png",
+          "size": [
+            48,
+            48
+          ]
+        },
+        {
+          "path": "favicon-asopitech-plate-32.png",
+          "size": [
+            32,
+            32
+          ]
+        },
+        {
+          "path": "favicon-asopitech-plate-16.png",
+          "size": [
+            16,
+            16
           ]
         }
       ]
