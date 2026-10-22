@@ -1,0 +1,10 @@
+# Rendered videos are build output (5-17 MB each); regenerate with ./render_all.sh
+out/
+
+# Unpublished post drafts. Post copy is kept on the private branch of the asopi-tech-blog project,
+# not in this public repository.
+POSTS.md
+
+# The generated keyframes stay on the owner's disk, not in this public repository. Their README.md
+# (the prompt and review record for each frame) is tracked.
+keyframes/*.png
